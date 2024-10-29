@@ -1,6 +1,7 @@
 """
     These are video related models.
 """
+
 from dataclasses import dataclass, field
 from typing import Optional, List
 
@@ -28,8 +29,8 @@ class RegionRestriction(BaseModel):
     Refer: https://developers.google.com/youtube/v3/docs/videos#contentDetails.regionRestriction
     """
 
-    allowed: List[str] = field(default=None)
-    blocked: List[str] = field(default=None, repr=False)
+    allowed: Optional[List[str]] = field(default=None)
+    blocked: Optional[List[str]] = field(default=None, repr=False)
 
 
 # TODO get detail rating description
@@ -221,6 +222,33 @@ class VideoStatus(BaseModel, DatetimeTimeMixin):
 
 
 @dataclass
+class VideoRecordingDetails(BaseModel, DatetimeTimeMixin):
+    """
+    A class representing the video recording details.
+
+    Refer: https://developers.google.com/youtube/v3/docs/videos#recordingDetails
+    """
+
+    recordingDate: Optional[str] = field(default=None, repr=False)
+
+
+@dataclass
+class VideoLiveStreamingDetails(BaseModel, DatetimeTimeMixin):
+    """
+    A class representing the video live streaming details.
+
+    Refer: https://developers.google.com/youtube/v3/docs/videos#liveStreamingDetails
+    """
+
+    actualStartTime: Optional[str] = field(default=None, repr=False)
+    actualEndTime: Optional[str] = field(default=None, repr=False)
+    scheduledStartTime: Optional[str] = field(default=None, repr=False)
+    scheduledEndTime: Optional[str] = field(default=None, repr=False)
+    concurrentViewers: Optional[int] = field(default=None)
+    activeLiveChatId: Optional[str] = field(default=None, repr=False)
+
+
+@dataclass
 class Video(BaseResource):
     """
     A class representing the video info.
@@ -234,6 +262,10 @@ class Video(BaseResource):
     statistics: Optional[VideoStatistics] = field(default=None, repr=False)
     topicDetails: Optional[VideoTopicDetails] = field(default=None, repr=False)
     player: Optional[Player] = field(default=None, repr=False)
+    recordingDetails: Optional[VideoRecordingDetails] = field(default=None, repr=False)
+    liveStreamingDetails: Optional[VideoLiveStreamingDetails] = field(
+        default=None, repr=False
+    )
 
 
 @dataclass
@@ -245,3 +277,37 @@ class VideoListResponse(BaseApiResponse):
     """
 
     items: Optional[List[Video]] = field(default=None, repr=False)
+
+
+@dataclass
+class VideoReportAbuse(BaseModel):
+    """
+    A class representing the video report abuse body.
+    """
+
+    videoId: Optional[str] = field(default=None)
+    reasonId: Optional[str] = field(default=None)
+    secondaryReasonId: Optional[str] = field(default=None)
+    comments: Optional[str] = field(default=None)
+    language: Optional[str] = field(default=None)
+
+
+@dataclass
+class VideoRatingItem(BaseModel):
+    """
+    A class representing the video rating item info.
+    """
+
+    videoId: Optional[str] = field(default=None)
+    rating: Optional[str] = field(default=None)
+
+
+@dataclass
+class VideoGetRatingResponse(BaseApiResponse):
+    """
+    A class representing the video rating response.
+
+    References: https://developers.google.com/youtube/v3/docs/videos/getRating#properties
+    """
+
+    items: Optional[List[VideoRatingItem]] = field(default=None, repr=False)

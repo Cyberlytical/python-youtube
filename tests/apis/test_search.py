@@ -112,7 +112,7 @@ class ApiSearchTest(unittest.TestCase):
 
             res = self.api.search_by_keywords(
                 q="surfing",
-                parts=["id", "snippet"],
+                parts=["snippet"],
                 count=25,
             )
             self.assertEqual(res.pageInfo.resultsPerPage, 25)
@@ -158,6 +158,7 @@ class ApiSearchTest(unittest.TestCase):
                 video_duration="any",
                 video_embeddable="any",
                 video_license="any",
+                video_paid_product_placement="any",
                 video_syndicated="any",
                 video_type="any",
             )

@@ -1,6 +1,74 @@
 # Changelog
 
-## Version 0.8.1
+All notable changes to this project will be documented in this file.
+
+## Version 0.9.7 (2024-10-28)
+
+### What's New
+
+- Fix dependencies.
+
+## Version 0.9.6 (2024-09-09)
+
+### What's New
+
+-Add new part field `recordingDetails` for video resource. Thanks for [@vmx](https://github.com/vmx)
+
+## Version 0.9.5 (2024-08-09)
+
+### What's New
+
+- Make video regionRestriction fields to Optional. Thanks for [@pidi3000](https://github.com/pidi3000)
+- Modify some examples. Thanks for [@pidi3000](https://github.com/pidi3000)
+- fix enf_parts for part with whitespaces. Thanks for [@pidi3000](https://github.com/pidi3000)
+
+## Version 0.9.4 (2024-02-18)
+
+### What's New
+
+- Add new parameter `for_handle` to get channel by handle.  
+- fix some wrong error message.
+
+## Version 0.9.3 (2023-11-22)
+
+### What's New
+
+- Add initial client with client_secret file. Thanks for [@pidi3000](https://github.com/pidi3000)
+
+## Version 0.9.2 (2023-09-26)
+
+### What's New
+
+- Add new parameter for search method
+- Mark some parameter or method to be deprecated.
+
+## Version 0.9.1 (2023-07-19)
+
+### What's New
+
+- upgrade poetry. Thanks for [@blaggacao](https://github.com/blaggacao)
+
+## Version 0.9.0 (2022-12-26)
+
+### What's New
+
+- Introduce new `Client` to operate YouTube DATA API. [#120](https://github.com/sns-sdks/python-youtube/issues/120).
+- More example to show library usage.
+
+## Version 0.8.3 (2022-10-17)
+
+### What's New
+
+- Add parts for video, thanks for [@Omer](https://github.com/dusking)
+
+## Version 0.8.2 (2022-03-16)
+
+### What's New
+
+- Update OAuthorize functions.
+- Update for examples.
+
+## Version 0.8.1 (2021-05-14)
 
 ### Deprecation
 
